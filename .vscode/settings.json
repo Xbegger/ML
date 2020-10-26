@@ -1,3 +1,5 @@
 {
-    "python.pythonPath": "F:\\Anaconda\\python.exe"
+    "python.pythonPath": "F:\\Anaconda\\python.exe",
+    "editor.fontSize": 16,
+    "vim.useCtrlKeys": false
 }
