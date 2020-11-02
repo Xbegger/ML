@@ -10,13 +10,15 @@ def cost(param, X, Y):
     belta = param.T
     
     res = 0
+    d1 = 0
+    d2 = 0
     for x, y in zip(X, Y):
         x.reshape(x.shape[0], 1)
         y.reshape(y.shape[0], 1)
         res += np.sum(np.multiply(-y, (x @ belta)) + np.log((1 + np.exp(x @ belta))))
-    p1 = sigmod(X @ belta)
-    d1 = np.sum(X @ (Y - p1))
-    d2 = np.sum(X @ X @ p1 @ X @ (1 - p1))
+        p1 = sigmod(x @ belta)
+        d1 = np.sum(x @ (y - p1))
+        d2 = np.sum(x @ x @ p1 @ x @ (1 - p1))
     return res, d1, d2
 
 def NewtonMethod(X, y, iters):
