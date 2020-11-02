@@ -77,7 +77,7 @@ data = pd.read_csv(path)
 X = np.array(data.iloc[:6,0:2], dtype='float')
 Y = np.array(data.iloc[:6,2:], dtype='float')
 
-loss, W, B = linearRegression(X, Y, 0.0005, 1000)
+loss, W, B = linearRegression(X, Y, 0.0005, 100)
 print(W,B, loss)
 
 X_test = np.array(data.iloc[6:,0:2], dtype='float')

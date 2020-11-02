@@ -19,10 +19,13 @@ def mapping(w, X):
     return new_X.T
 
 
-def plot(yes, no):
+def plot(yes, no, new_yes, new_no):
     fig, ax = plt.subplots(figsize=(12, 8))
-    ax.scatter(yes[:, 0], yes[:, 1], marker='^', c='b', label='new_Yes')
-    ax.scatter(no[:, 0], no[:, 1], marker='*', c='r', label='new_No')
+    ax.scatter(new_yes[:, 0], new_yes[:, 1], marker='^', c='b', label='new_Yes')
+    ax.scatter(new_no[:, 0], new_no[:, 1], marker='*', c='r', label='new_No')
+    ax.scatter(yes['Density'], yes['Sugar content'], marker='o', c='b', label='Yes')
+    ax.scatter(no['Density'], no['Sugar content'], marker='x', c='r', label='No')
+    ax.legend()
     ax.set_xlabel('Density')
     ax.set_ylabel('Sugar content')
     plt.axis([0, 1., 0, 1.])
@@ -37,7 +40,7 @@ data['Good melon'][data['Good melon'].isin(['否'])] = 0
 
 yes = data[data['Good melon'].isin([1])]
 no = data[data['Good melon'].isin([0])]
-plot(np.array(yes), np.array(no))
+
 
 X_0 = np.array(data[data['Good melon'].isin([0])].iloc[:, 0:2], dtype='float')
 X_1 = np.array(data[data['Good melon'].isin([1])].iloc[:, 0:2], dtype='float')
@@ -48,7 +51,7 @@ np.insert(w, values=0, axis=1, obj=0).T
 
 new_yes = mapping(w, X_1)
 new_no = mapping(w, X_0)
-plot(new_yes, new_no)
+plot(yes, no, new_yes, new_no)
 
 
 
