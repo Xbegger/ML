@@ -390,15 +390,11 @@ plot(X, C[3], Title[3])
 for c, title in zip(C, Title):
     scores = calMetric_JC(c, Tag)
     print(title, "JC:", scores)
-for c, title in zip(C, Title):
     scores = calMetric_FMI(c, Tag)
     print(title, "FMI:", scores)
-for c, title in zip(C, Title):
     scores = calMetric_RI(c, Tag)
     print(title, "RI:", scores)
-for c, title in zip(C, Title):
     scores = calMetric_DBI(X, c)
     print(title, "DBI:", scores)
-for c, title in zip(C, Title):
     scores = calMetric_DI(X, c)
     print(title, "DI:", scores)
